@@ -1,0 +1,13 @@
+{
+  "name": "Promised Land Initiative",
+  "short_name": "PLI",
+  "description": "Restoring Hope, Transforming Lives — Promised Land Initiative, Uganda.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbf7ef",
+  "theme_color": "#142255",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

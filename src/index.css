@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap");
+
+@theme {
+  /* Colors — drawn from the Promised Land Initiative mark:
+     sky-blue letterforms, a crimson/navy swoosh, deep indigo wordmark. */
+  --color-ink: #211f1a;
+  --color-navy: #142255;
+  --color-navy-2: #1c2f74;
+  --color-sky: #1c96d6;
+  --color-sky-light: #cdeafb;
+  --color-crimson: #c22a3a;
+  --color-sand: #fbf7ef;
+  --color-sand-2: #f3ecdd;
+  --color-gold: #d99a3d;
+  --color-cream: #fffdf8;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 0.375rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
