@@ -3,7 +3,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { PageHero, Eyebrow } from "../components/Bits";
 import Container from "../components/Container";
 import { db, firebaseEnabled } from "../lib/firebase";
-import { usePrayerRequests } from "../lib/liveContent";
+import { usePrayerRequests, useChurchNeeds } from "../lib/liveContent";
+import { cloudinaryImage } from "../lib/cloudinary";
 import usePageSEO from "../lib/useSEO";
 
 function timeAgo(timestamp) {
@@ -18,6 +19,7 @@ function timeAgo(timestamp) {
 
 export default function PrayerRequests() {
   const requests = usePrayerRequests();
+  const needs = useChurchNeeds();
   const [form, setForm] = useState({ name: "", request: "" });
   const [status, setStatus] = useState("idle"); // idle | submitting | done | error
 
@@ -55,6 +57,42 @@ export default function PrayerRequests() {
         title="Share a prayer request"
         lead="Tell us what's on your heart — our community prays over every request shared here."
       />
+
+      {needs && needs.length > 0 && (
+        <section className="bg-sand-2 py-16">
+          <Container>
+            <Eyebrow tone="navy">Pray For Us</Eyebrow>
+            <p className="mt-3 max-w-xl text-sm text-ink/60">
+              Specific, current needs from our community — your support with
+              any of these makes a direct, immediate difference.
+            </p>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {needs.map((need) => (
+                <div
+                  key={need.id}
+                  className="overflow-hidden rounded-card border border-navy/10 bg-white"
+                >
+                  <img
+                    src={cloudinaryImage(need.publicId, { width: 640 })}
+                    alt=""
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <div className="p-5">
+                    <p className="font-display text-base font-semibold text-navy">
+                      {need.title}
+                    </p>
+                    {need.details && (
+                      <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                        {need.details}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
 
       <section className="py-16">
         <Container className="grid gap-12 md:grid-cols-[1fr_1.2fr]">

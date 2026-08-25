@@ -130,6 +130,30 @@ export function useProgramPhotos() {
   return photos;
 }
 
+// Hero carousel slides for the homepage. Falls back to null (not []),
+// so the homepage can tell "still loading" apart from "genuinely no
+// slides yet" and show its own fixed fallback hero in the latter case.
+export function useHeroSlides() {
+  const [slides, setSlides] = useState(firebaseEnabled ? null : []);
+
+  useEffect(() => {
+    if (!firebaseEnabled) return;
+
+    const q = query(collection(db, "heroSlides"), orderBy("order", "asc"));
+    const unsub = onSnapshot(
+      q,
+      (snap) => setSlides(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
+      (err) => {
+        console.error("Failed to load hero slides:", err);
+        setSlides([]);
+      }
+    );
+    return unsub;
+  }, []);
+
+  return slides;
+}
+
 export function useEvents() {
   const [events, setEvents] = useState(firebaseEnabled ? null : []);
 
@@ -157,6 +181,29 @@ export function useEvents() {
   }, []);
 
   return events;
+}
+
+// Admin-posted "church needs" — a specific ask (photo + title + short
+// details), distinct from the public-submitted prayer requests below.
+export function useChurchNeeds() {
+  const [needs, setNeeds] = useState(firebaseEnabled ? null : []);
+
+  useEffect(() => {
+    if (!firebaseEnabled) return;
+
+    const q = query(collection(db, "churchNeeds"), orderBy("createdAt", "desc"));
+    const unsub = onSnapshot(
+      q,
+      (snap) => setNeeds(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
+      (err) => {
+        console.error("Failed to load church needs:", err);
+        setNeeds([]);
+      }
+    );
+    return unsub;
+  }, []);
+
+  return needs;
 }
 
 export function usePrayerRequests() {

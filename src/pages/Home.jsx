@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Container from "../components/Container";
-import Swoosh from "../components/Swoosh";
+import HeroCarousel from "../components/HeroCarousel";
 import { Eyebrow, ProgramCard } from "../components/Bits";
 import { org, vision, mission, coreValues, programs, beneficiaries } from "../data/content";
 import { useProgramPhotos } from "../lib/liveContent";
@@ -15,37 +15,7 @@ export default function Home() {
   );
   return (
     <>
-      {/* Hero — the mark's own gesture becomes the backdrop */}
-      <section className="relative overflow-hidden bg-navy text-cream">
-        <Swoosh className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.14]" />
-        <Container className="relative py-20 md:py-28">
-          <p className="font-eyebrow text-xs text-sky-light">
-            {org.location} · Est. {org.yearFounded}
-          </p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[1.05] md:text-6xl">
-            {org.tagline}.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-cream/80">
-            {org.name} carries the Gospel and practical support into schools,
-            hospitals and communities across Uganda — restoring dignity to
-            children, youth, and families who need it most.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link
-              to="/get-involved"
-              className="rounded-sm bg-crimson px-6 py-3 font-eyebrow text-xs text-cream transition-colors hover:bg-crimson/90"
-            >
-              Get Involved
-            </Link>
-            <Link
-              to="/programs"
-              className="rounded-sm border border-cream/30 px-6 py-3 font-eyebrow text-xs text-cream/90 transition-colors hover:border-cream"
-            >
-              See Our Programs
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <HeroCarousel />
 
       {/* Vision / Mission */}
       <section className="py-20">

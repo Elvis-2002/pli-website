@@ -13,6 +13,13 @@ export const org = {
   // TODO: replace with the organisation's real contact details once assigned.
   email: "",
   phone: "",
+  social: {
+    facebook: "https://www.facebook.com/share/1EeZemm8tK/",
+    twitter: "https://x.com/promisedlandug",
+    tiktok: "https://www.tiktok.com/@ssempijja.samuel3",
+    instagram: "https://www.instagram.com/ssempijja.s",
+    youtube: "https://youtube.com/@promisedlandinitiative?si=Dpm2GSTKt5odOTiZ"
+  },
 };
 
 export const vision =
@@ -179,7 +186,7 @@ export const involvementOptions = [
       "Churches, schools, and NGOs can partner with us on ongoing programs in their community.",
   },
   {
-    title: "Give",
+    title: "Donate",
     description:
       "Support school fees, sanitary pads, patient starter kits, or a program of your choice.",
   },

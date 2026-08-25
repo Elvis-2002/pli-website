@@ -109,7 +109,7 @@ export default function Nav() {
             to="/get-involved"
             className="rounded-sm bg-navy px-4 py-2 font-eyebrow text-xs text-cream transition-colors hover:bg-navy-2"
           >
-            Give
+            Donate
           </NavLink>
         </nav>
 

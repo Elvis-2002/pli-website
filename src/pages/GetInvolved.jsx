@@ -38,7 +38,7 @@ export default function GetInvolved() {
 
       <section className="bg-sand-2 py-16">
         <Container>
-          <Eyebrow tone="navy">Give Toward a Specific Program</Eyebrow>
+          <Eyebrow tone="navy">Donate Toward a Specific Program</Eyebrow>
           <div className="mt-6 flex flex-wrap gap-3">
             {programs.map((p) => (
               <Link
